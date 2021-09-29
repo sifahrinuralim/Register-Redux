@@ -2,7 +2,7 @@ const initialState = {
     firstName: "",
     lastName: "",
     email: "",
-    phoneNumber = 0,
+    phoneNumber: 0,
     password: "",
 }
 
@@ -33,5 +33,21 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 password: action.password
             }
+        case "SET_ALL":
+
+            console.log("Changing all user state", action);
+
+            return {
+                ...state,
+                firstName: action.payload.firstName,
+                lastName: action.payload.lastName,
+                email: action.payload.email,
+                phoneNumber: action.payload.phoneNumber,
+                password: action.payload.password
+            }
+        default:
+            return state
     }
 }
+
+export default userReducer
